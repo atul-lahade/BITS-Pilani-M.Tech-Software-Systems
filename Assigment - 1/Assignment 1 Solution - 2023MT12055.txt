@@ -1,0 +1,25 @@
+Algorithm findhighestscorer(N, Names, Marks):
+
+	for i = 1 to N do 				//N Total no of students
+		push(s, Marks[i]) 			//s is a stack of marks
+		enqueue(q1, Names[i]) 		//q1 is a queue of student names
+
+	highestMarks ← -1
+
+	for i = 1 to N do
+		studentMarks ← pop(s) 
+		enqueue(q2, studentMarks) 	//q2 is 2nd queue of marks
+	
+	for i = 1 to N do
+		studentMarks ← dequeue(q2) 	//Dequeuing q2
+		push(s, studentMarks) 		//Pushing students marks to initial stack s
+	
+	for i = 1 to N do
+		studentMarks ← pop(s)
+		studentName ← dequeue(q1)
+		
+		if studentMarks > highestMarks then
+			highestMarks ← studentMarks
+			highestScorerName ← studentName
+
+	return highestScorerName
